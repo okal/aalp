@@ -24,8 +24,8 @@ def get_tree(log_entry_list):
 def parse(access_log_data):
     return get_tree(tokenize(access_log_data))
 
-def filter_by_property_value(log_entry_dict_list, access_log_property, value):
-    return [entry for entry in log_entry_dict_list if entry[access_log_property] == value]
+def filter_by_property_value(log_entry_dict_list, property_key, property_value):
+    return [entry for entry in log_entry_dict_list if entry[property_key] == property_value]
 
 def filter_by_client_IP(log_entry_dict_list, client_IP):
     return filter_by_property_value(log_entry_dict_list, 'client-ip', client_IP)
