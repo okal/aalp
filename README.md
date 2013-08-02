@@ -1,5 +1,6 @@
 Apache Access Log Parser
-========================
+------------------------
+
 
 ## Intro
 
@@ -14,6 +15,7 @@ import apache_log_parser
 access_log_data = open('access.log')
 print apache_log_parser.parse(access_log_data)[0]
 ```
+
 ## License
 
 MIT License
