@@ -48,6 +48,10 @@ def filter_by_property_value(access_log_data, access_log_property, value):
 def filter_by_client_ip(access_log_data, client_ip):
     return filter_by_property_value(access_log_data, 'client-ip', client_ip)
 
+def filter_by_GET_URL(access_log_data, url):
+    request_line = 'GET %s HTTP/1.1' % url
+    return filter_by_property_value(access_log_data, 'request-line', request_line)
+
 def get_all_property_values(access_log_data, property_key):
     """
     Get all values of a given property of log entries given the property key.
@@ -56,3 +60,4 @@ def get_all_property_values(access_log_data, property_key):
 
 def get_all_client_IPs(access_log_data, client_ip):
     return set(get_all_property_values(access_log_data, 'client-ip'))
+
