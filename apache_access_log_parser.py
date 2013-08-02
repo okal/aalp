@@ -37,6 +37,15 @@ def filter_by_GET_URL(log_entry_dict_list, url):
 def get_all_property_values(log_entry_dict_list, property_key):
     return [entry[property_key] for entry in log_entry_dict_list]
 
-def get_all_client_IPs(log_entry_dict_list, client_IP):
-    return set(get_all_property_values(log_entry_dict_list, 'client-ip'))
+def get_all_property_values_with_count(log_entry_dict_list, property_key):
+    property_value_list = get_all_property_values(log_entry_dict_list, property_key)
+    property_value_set = set(property_value_list)
+    property_value_list_with_count = []
+    for value in property_value_set:
+        property_value_list_with_count.append((value, property_value_list.count(value)))
+    property_value_list_with_count.sort(lambda x, y: cmp(x[1], y[1]))
+    return property_value_list_with_count
+
+def get_all_client_IPs_with_count(log_entry_dict_list):
+    return get_all_property_values_with_count(log_entry_dict_list, 'client-ip')
 
