@@ -32,3 +32,16 @@ def parse(access_log_data):
     """
     return get_tree(tokenize(access_log_data))
 
+def filter_by_property_value(access_log_data, access_log_property, value):
+    """
+    Returns a list of dictionaries each representing individual log entries
+    filtered by the value of a given property.
+    
+    Possible properties are:
+    
+    "client-ip", "ident", username", "time", "request-line", "status-code",
+    "size", "referrer" and "agent"
+
+    """
+    return [entry for entry in parse(access_log_data) if entry[access_log_property] == value]
+
