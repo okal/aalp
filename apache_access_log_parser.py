@@ -53,3 +53,6 @@ def get_all_property_values(access_log_data, property_key):
     Get all values of a given property of log entries given the property key.
     """
     return [entry[property_key] for entry in parse(access_log_data)]
+
+def get_all_client_IPs(access_log_data, client_ip):
+    return set(get_all_property_values(access_log_data, 'client-ip'))
