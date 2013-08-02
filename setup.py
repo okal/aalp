@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='aapl',
+    name='aalp',
     version='0.1',
     description='Basic Apache Access Log Parser',
     author='Okal Otieno',
