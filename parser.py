@@ -1,8 +1,34 @@
 import shlex
 
-def tokenize(file_name):
-    access_log = open(file_name)
-    log_entries = tuple(access_log.read().splitlines())
-    print "%d log entries" % len(log_entries)
-    v2_download_log_entries = [entry for entry in log_entries if "GET /downloads/" in entry]
-    print "%d version 2 download log entries" % len(v2_download_log_entries)
+access_log_field_names = [
+    "client-ip",
+    "ident",
+    "username",
+    "time",
+    "request-line",
+    "status-code",
+    "size",
+    "referrer",
+    "agent"
+]
+
+def tokenize(access_log_data):
+    'Returns a list of strings for each access log entry'
+    cleaned_access_log_data = access_log_data.replace('[', '"').replace(']', '"')
+    return [ shlex.split(entry) for entry in cleaned_access_log_data.splitlines() ]
+
+def get_tree(log_entry_list):
+    """
+    Returns a list of dictionaries each representing individual log entries
+    """
+    log_entry_dict_list = [dict(zip(access_log_field_names, entry)) for entry in log_entry_list]
+    log_entry_dict_list.sort(lambda x, y: cmp(x['client-ip'], y['client-ip']))
+    return log_entry_dict_list
+
+def parse(access_log_data):
+    """
+    Returns a list of dictionaries each representing individual log entries
+    given the contents of an access log.
+    """
+    return get_tree(tokenize(access_log_data))
+
