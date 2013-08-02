@@ -39,11 +39,10 @@ def get_all_property_values(log_entry_dict_list, property_key):
 
 def get_all_property_values_with_count(log_entry_dict_list, property_key):
     property_value_list = get_all_property_values(log_entry_dict_list, property_key)
-    property_value_set = set(property_value_list)
     property_value_list_with_count = []
-    for value in property_value_set:
+    for value in set(property_value_list):
         property_value_list_with_count.append((value, property_value_list.count(value)))
-    property_value_list_with_count.sort(lambda x, y: cmp(x[1], y[1]))
+    property_value_list_with_count.sort(lambda x, y: cmp(x[1], y[1])).reverse()
     return property_value_list_with_count
 
 def get_all_client_IPs_with_count(log_entry_dict_list):
