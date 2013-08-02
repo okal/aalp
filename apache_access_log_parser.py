@@ -27,8 +27,8 @@ def parse(access_log_data):
 def filter_by_property_value(log_entry_dict_list, access_log_property, value):
     return [entry for entry in log_entry_dict_list if entry[access_log_property] == value]
 
-def filter_by_client_ip(log_entry_dict_list, client_ip):
-    return filter_by_property_value(log_entry_dict_list, 'client-ip', client_ip)
+def filter_by_client_IP(log_entry_dict_list, client_IP):
+    return filter_by_property_value(log_entry_dict_list, 'client-ip', client_IP)
 
 def filter_by_GET_URL(log_entry_dict_list, url):
     request_line = 'GET %s HTTP/1.1' % url
@@ -37,6 +37,6 @@ def filter_by_GET_URL(log_entry_dict_list, url):
 def get_all_property_values(log_entry_dict_list, property_key):
     return [entry[property_key] for entry in log_entry_dict_list]
 
-def get_all_client_IPs(log_entry_dict_list, client_ip):
+def get_all_client_IPs(log_entry_dict_list, client_IP):
     return set(get_all_property_values(log_entry_dict_list, 'client-ip'))
 
