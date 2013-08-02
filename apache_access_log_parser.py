@@ -45,3 +45,5 @@ def filter_by_property_value(access_log_data, access_log_property, value):
     """
     return [entry for entry in parse(access_log_data) if entry[access_log_property] == value]
 
+def filter_by_client_ip(access_log_data, client_ip):
+    return filter_by_property_value(access_log_data, 'client-ip', client_ip) 
