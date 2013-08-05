@@ -13,7 +13,7 @@ access_log_field_names = [
 ]
 
 def tokenize(access_log_data):
-    cleaned_access_log_data = access_log_data.replace('[', '"').replace(']', '"')
+    cleaned_access_log_data = access_log_data.replace(' [', ' "').replace('] ', '" ')
     return [ shlex.split(entry) for entry in cleaned_access_log_data.splitlines() ]
 
 def get_tree(log_entry_list):
