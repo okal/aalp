@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='aalp',
-    version='0.3',
+    version='0.4',
     description='Basic Apache Access Log Parser',
     author='Okal Otieno',
     author_email='okal+python@justokal.com',
