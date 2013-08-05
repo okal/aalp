@@ -1,12 +1,12 @@
-from setuptools import setup, find_packages
+from setuptools import setup
 
 setup(
     name='aalp',
-    version='0.2',
+    version='0.3',
     description='Basic Apache Access Log Parser',
     author='Okal Otieno',
     author_email='okal+python@justokal.com',
     url='https://github.com/okal/aapl',
-    packages=find_packages(),
+    packages=['aalp'],
     license='MIT License',
     zip_safe=True)
